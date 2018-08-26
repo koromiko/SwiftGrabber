@@ -41,7 +41,8 @@ public class GrabberCoordinator {
         self.success = success
         self.failure = failure
 
-        let header = ["apiKey": token]
+        let tokenInfo = token.components(separatedBy: ":")
+        let header = [tokenInfo[0]: tokenInfo[1]]
         networkService.fetch(url: url, header: header, complete: responseHandler)
     }
 
